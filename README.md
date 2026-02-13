@@ -1,7 +1,7 @@
 # RMIS Benchmark: Representation of M5 Industrial Signals
 
+[![Website](https://img.shields.io/badge/Website-RMIS-pink?log=RMIS)](https://jianganbai.github.io/RMIS)
 [![Paper](https://img.shields.io/badge/arXiv-2507.16696-blueviolet?logo=arxiv)](https://arxiv.org/abs/2507.16696)
-[![Platform](https://img.shields.io/badge/Platform-Linux-yellow?logo=Linux)](https://github.com/torvalds/linux)
 [![Python](https://img.shields.io/badge/Python-3.10+-orange?logo=Python)](https://www.python.org/)
 [![Pytorch](https://img.shields.io/badge/Pytorch-2.0+-green?logo=Pytorch)](https://pytorch.org/)
 [![FISHER](https://img.shields.io/badge/Model-FISHER-red?logo=FISHER)](https://github.com/jianganbai/FISHER)
@@ -174,7 +174,7 @@ python -m rmis.scripts.reg_all \
   <img src="docs/assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:65%; max-width: 1000px; margin-bottom: 15px;">
 </div>
 
-Please visit the [RMIS Leaderboard](https://jianganbai.github.io/RMIS) for full results.
+Please visit the [RMIS Leaderboard](https://jianganbai.github.io/RMIS/leaderboard.html) for full results.
 
 
 ## Acknowledgements
