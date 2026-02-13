@@ -171,7 +171,7 @@ python -m rmis.scripts.reg_all \
 ## 🏆 Leaderboard
 
 <div align="center">
-  <img src="assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:65%; max-width: 1000px; margin-bottom: 15px;">
+  <img src="docs/assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:65%; max-width: 1000px; margin-bottom: 15px;">
 </div>
 
 Please visit the [RMIS Leaderboard](https://jianganbai.github.io/RMIS) for full results.
