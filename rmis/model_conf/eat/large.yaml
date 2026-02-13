@@ -1,0 +1,23 @@
+# data
+sample_rate: 16000
+feat_type: fbank  # wav, fbank
+fbank_conf:
+  impl: kaldi  # kaldi, torchaudio
+  num_mel_bins: 128
+  frame_length: 25
+  frame_shift: 10
+  dither: 0.0
+  window_type: hanning
+  htk_compat: True
+  use_energy: False
+
+# preprocess
+norm: False
+
+# model
+model_name: eat
+model_conf:
+  model_id: worstchan/EAT-large_epoch20_pretrain
+
+# inference
+batch_size: 32

@@ -1,0 +1,37 @@
+# path
+meta_data_dir: data/meta_data
+detect_conf_dir: uni_detect/conf/
+
+# datasets
+downstream: idmt_engine
+infer_metric: knn  # classify, knn
+
+# data
+input_duration: 3.0  # NOTE: should add padding mask
+hop_duration: null  # None
+comple: pad  # pad, cycle
+sample_rate: null
+feat_type: null
+use_shard: True
+shard_conf:
+  shard_dir: data/shard/
+  num_shards: 1
+num_workers: 1
+
+# preprocess
+norm: False
+
+# model
+model_name: null
+with_loss: False
+aggregation: mean
+emb_size: 0
+
+# inference
+batch_size: 8
+
+# detect
+detect:
+  k: 5
+  min_k: 1
+  max_k: 20

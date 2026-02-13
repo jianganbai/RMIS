@@ -1,0 +1,36 @@
+# dcase
+dcase20_dir: /path/to/dcase20  # inside: dev_data, eval_data
+dcase21_dir: /path/to/dcase21  # inside: dev_data, eval_data
+dcase22_dir: /path/to/dcase22  # inside: dev_data, eval_data
+dcase23_dir: /path/to/dcase23  # inside: dev_data, eval_data
+dcase24_dir: /path/to/dcase24  # inside: dev_data, eval_data
+dcase25_dir: /path/to/dcase25  # inside: dev_data, eval_data
+dcase_eval_gt_dir: uni_detect/data/dcase_eval_gt
+
+# idmt
+idmt_isa_compressed_air_dir: /path/to/idmt_air  # inside: tubeleak, ventleak, ventlow
+idmt_isa_electric_engine_dir: /path/to/idmt_engine  # inside: train_cut, test_cut, etc
+
+# wt_planetary_gearbox
+wt_plane_gearbox_dir: /path/to/wtpg  # inside: a lot of flac files
+
+# mafaulda
+mafaulda_vib_dir: /path/to/mafaulda_vib  # inside: a lot of wav files
+mafaulda_sound_dir: /path/to/mafaulda_sound  # inside: a lot of wav files
+
+# sdust
+sdust_bearing_dir: /path/to/sdust_bearing  # inside: a lot of wav files
+sdust_gear_dir: /path/to/sdust_gear  # inside: a lot of wav files
+
+# umged
+umged_sound_dir: /path/to/umged_sound  # inside: a lot of wav files
+umged_vib_dir: /path/to/umged_vib  # inside: a lot of wav files
+umged_cur_dir: /path/to/umged_cur  # inside: a lot of wav files
+umged_vol_dir: /path/to/umged_vol  # inside: a lot of wav files
+
+# pu
+pu_vib_dir: /path/to/pu_vib  # inside: a lot of wav files
+pu_cur_dir: /path/to/pu_cur  # inside: a lot of wav files
+
+# local_dir: top directory to your model zoo, will be combined with the relative path in model_conf
+model_dir: /path/to/local/model/dir

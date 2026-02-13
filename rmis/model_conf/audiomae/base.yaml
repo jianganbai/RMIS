@@ -1,0 +1,23 @@
+# data
+sample_rate: 16000
+feat_type: fbank  # wav, fbank
+fbank_conf:
+  impl: kaldi  # kaldi, torchaudio
+  num_mel_bins: 128
+  frame_length: 25
+  frame_shift: 10
+  dither: 0.0
+  htk_compat: True
+  use_energy: False
+  window_type: hanning
+
+# preprocess
+norm: False
+
+# model
+model_name: audiomae
+model_conf:
+  ckpt: /path/to/local/audiomae/base
+
+# inference
+batch_size: 32

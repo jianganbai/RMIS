@@ -1,0 +1,17 @@
+# auxiliary dirs
+.vscode/
+__pycache__
+cache
+/data
+exp
+imgs
+temp
+
+# special files
+*.md5
+
+# miscellaneous
+Rs*csv
+log*
+results*
+fairseq*

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMIS Leaderboard</title>
+    <!-- 1. Add Tailwind and FontAwesome for the Navbar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --mpblue: #1F77B4; --mporange: #FF7F0E; --mpgreen: #2CA02C;
+            --mpred: #D62728; --mppurple: #9467BD; --mpbrown: #8C564B;
+            --mppink: #E377C2; --mpgray: #7F7F7F; --mpolive: #BCBD22;
+            --border-color: #d1d5da; --header-bg: #f6f8fa;
+            --col1-width: 100px; --col2-width: 60px;
+        }
+
+        /* 2. Modified body to allow full-width navbar */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.5; color: #24292e; margin: 0; padding: 0; /* Removed margin 20px */
+            background-color: #fdfdfd;
+        }
+
+        /* 3. Wrap your existing content in a container for padding */
+        .main-content {
+            padding: 20px;
+        }
+
+        .table-container {
+            position: relative;
+            max-width: 100%;
+            max-height: 80vh;
+            overflow: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: white;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* --- Sticky Header & Columns --- */
+        th, td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e1e4e8;
+            border-right: 1px solid #f0f0f0;
+            white-space: nowrap;
+        }
+
+        thead th {
+            position: sticky;
+            top: 0;
+            background-color: var(--header-bg);
+            z-index: 10;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sticky-col-1 {
+            position: sticky; left: 0;
+            min-width: var(--col1-width); z-index: 5; background: white;
+            border-right: 1px solid var(--border-color) !important;
+        }
+
+        .sticky-col-2 {
+            position: sticky; left: var(--col1-width);
+            min-width: var(--col2-width); z-index: 5; background: white;
+            border-right: 2px solid var(--border-color) !important;
+        }
+
+        thead tr th.sticky-col-1, thead tr th.sticky-col-2 {
+            z-index: 15; background-color: var(--header-bg);
+        }
+
+        /* --- Interaction --- */
+        .sortable { cursor: pointer; user-select: none; }
+        .sortable:hover { background-color: #ebedef !important; }
+        .sortable::after { content: ' ↕'; opacity: 0.3; font-size: 10px; }
+        tr:hover td { background-color: #f1f8ff !important; }
+
+        /* --- Styling --- */
+        .mpblue { color: var(--mpblue); font-weight: bold; }
+        .mporange { color: var(--mporange); font-weight: bold; }
+        .mppurple { color: var(--mppurple); font-weight: bold; }
+        .mpred { color: var(--mpred); font-weight: bold; }
+        
+        .shaded { background-color: #f6f8fa; font-weight: bold; }
+        .best { font-weight: bold; text-decoration: underline; background-color: #fff9c4; }
+
+        .legend { margin-top: 15px; font-size: 12px; border: 1px solid #eee; padding: 10px; border-radius: 5px; }
+        .legend-item { display: inline-block; margin-right: 15px; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-[100] bg-slate-900 text-white shadow-lg w-full">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold tracking-tighter">RMIS <span class="text-blue-400">Benchmark</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                    <a href="leaderboard.html" class="hover:text-blue-400 transition">Leaderboard</a>
+                    <a href="download.html" class="hover:text-blue-400 transition">Download</a>
+                    <a href="usage.html" class="hover:text-blue-400 transition">Usage</a>
+                    <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-400 transition"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="gradient-bg text-white py-10 px-4 mb-5">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4">🏆 RMIS Benchmark Leaderboard</h1>
+        </div>
+    </header>
+
+    <div class="main-content">
+
+    <div class="bg-blue-50 border-l-4 border-blue-500 px-6 py-1 rounded-r-lg shadow-sm">
+        <p class="text-gray-700 mb-4 mt-4" style="font-size: 18px;">
+            We report an overall <strong>RMIS score</strong> across all datasets, where the higher the score is, the better the model is!
+        </p>
+        <p class="text-gray-700 mb-4 mt-4" style="font-size: 18px;">
+            <strong>We warmly welcome fellow researchers to test their models on the RMIS benchmark! If you would like to showcase your model on the leaderboard, please provide a minimum inference code and contact us at</strong>
+                <a href="mailto:jab22@mails.tsinghua.edu.cn" style="font-weight: bold; color: blue; text-decoration: none;">
+                    jab22@mails.tsinghua.edu.cn
+                </a>
+        </p>
+    </div>
+
+    <div align="center">
+        <img src="../assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:50%; max-width: 1000px; margin-top: 20px; margin-bottom: 30px;"/>
+    </div>
+
+    <div class="table-container">
+        <table id="rmisTable">
+            <thead>
+                <tr>
+                    <th rowspan="3" class="sticky-col-1 sortable" data-sort="0">Model</th>
+                    <th rowspan="3" class="sticky-col-2 sortable" data-sort="1">Variant</th>
+                    <th rowspan="3" class="sortable" data-sort="2">Size</th>
+                    <th rowspan="3" class="shaded sortable" data-sort="3">RMIS</th> <!-- Moved to front -->
+                    <th colspan="7">Anomaly Detection</th>
+                    <th colspan="14">Fault Diagnosis</th>
+                </tr>
+                <tr>
+                    <th colspan="6">DCASE</th>
+                    <th rowspan="2" class="shaded sortable" data-sort="10">Mean</th>
+                    <th rowspan="2" class="sortable" data-sort="11">IICA</th>
+                    <th rowspan="2" class="sortable" data-sort="12">IIEE</th>
+                    <th rowspan="2" class="sortable" data-sort="13">WTPG</th>
+                    <th colspan="2">MaFaulDa</th>
+                    <th colspan="2">SDUST</th>
+                    <th colspan="4">UMGED</th>
+                    <th colspan="2">PU</th>
+                    <th rowspan="2" class="shaded sortable" data-sort="24">Mean</th>
+                </tr>
+                <tr>
+                    <th class="sortable" data-sort="4">20</th><th class="sortable" data-sort="5">21</th><th class="sortable" data-sort="6">22</th>
+                    <th class="sortable" data-sort="7">23</th><th class="sortable" data-sort="8">24</th><th class="sortable" data-sort="9">25</th>
+                    <th class="sortable" data-sort="14">sound</th><th class="sortable" data-sort="15">vib</th>
+                    <th class="sortable" data-sort="16">bearing</th><th class="sortable" data-sort="17">gear</th>
+                    <th class="sortable" data-sort="18">sound</th><th class="sortable" data-sort="19">vib</th>
+                    <th class="sortable" data-sort="20">vol</th><th class="sortable" data-sort="21">cur</th>
+                    <th class="sortable" data-sort="22">vib</th><th class="sortable" data-sort="23">cur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- AudioMAE -->
+                <tr><td class="sticky-col-1 mporange">AudioMAE</td><td class="sticky-col-2">base</td><td>85M</td><td class="shaded">51.61</td><td>63.87</td><td> 54.86</td><td>56.34</td><td>57.96</td><td>55.30</td><td>56.82 </td><td class="shaded"> 57.52</td><td>58.88</td><td>53.89</td><td>64.02</td><td>47.48</td><td>80.95</td><td>59.74</td><td>98.18</td><td>6.91</td><td>10.93</td><td>10.01</td><td>11.59</td><td>56.02</td><td>35.54 </td><td class="shaded"> 45.70</td></tr>
+
+                <!-- BEATs -->
+                <tr><td class="sticky-col-1 mporange">BEATs</td><td class="sticky-col-2">iter3</td><td>90M</td><td class="shaded">57.30</td><td class="best">74.20</td><td class="best">60.50</td><td>58.95</td><td class="shaded best">63.31</td><td>56.93</td><td>59.09</td><td class="shaded best">62.16</td><td>77.93</td><td>68.17</td><td>70.57</td><td>52.87</td><td>84.45</td><td>62.37</td><td>98.23</td><td>5.98</td><td>10.32</td><td>10.95</td><td>17.23</td><td>74.18</td><td>48.42</td><td class="shaded">52.44</td></tr>
+
+                <!-- EAT -->
+                <tr><td class="sticky-col-1 mporange">EAT</td><td class="sticky-col-2">base30</td><td>88M</td><td class="shaded">57.62</td><td>72.69</td><td>58.03</td><td>58.84</td><td>59.35</td><td>56.48</td><td>58.65</td><td class="shaded">60.67</td><td>64.48</td><td>96.65</td><td>61.28</td><td>68.32</td><td>91.90</td><td>64.03</td><td>95.46</td><td>7.89</td><td>9.39</td><td>12.49</td><td>18.87</td><td>68.33</td><td>50.38</td><td class="shaded">54.57</td></tr>
+                <tr><td class="sticky-col-1 mporange">EAT</td><td class="sticky-col-2">large</td><td>310M</td><td class="shaded">58.03</td><td>73.81</td><td>57.06</td><td>57.94</td><td>60.29</td><td>57.78</td><td  class="shaded best">60.34</td><td class="shaded">61.20</td><td>65.80</td><td>94.06</td><td>68.91</td><td>58.47</td><td>88.42</td><td>62.64</td><td>96.32</td><td>9.57</td><td>11.60</td><td>11.22</td><td>15.54</td><td>75.74</td><td>54.73</td><td class="shaded">54.85</td></tr>
+
+                <!-- CED -->
+                <tr><td class="sticky-col-1 mporange">CED</td><td class="sticky-col-2">tiny</td><td>5.5M</td><td class="shaded">55.36</td><td>66.99</td><td>56.17</td><td>56.75</td><td>60.09</td><td>56.40</td><td>58.40</td><td class="shaded">59.15</td><td>47.93</td><td>74.23</td><td>89.43</td><td>53.77</td><td>84.56</td><td>59.02</td><td>96.06</td><td>8.09</td><td>12.96</td><td>10.31</td><td>12.65</td><td>71.50</td><td>49.95</td><td class="shaded">51.57</td></tr>
+                <tr><td class="sticky-col-1 mporange">CED</td><td class="sticky-col-2">mini</td><td>9.6M</td><td class="shaded">55.95</td><td>67.48</td><td>56.35</td><td>56.59</td><td>60.05</td><td>57.44</td><td>58.26</td><td class="shaded">59.36</td><td>50.21</td><td>84.26</td><td>89.26</td><td>56.95</td><td>84.88</td><td>59.24</td><td>95.50</td><td>8.36</td><td>11.66</td><td>10.13</td><td>12.43</td><td>71.50</td><td>48.56</td><td class="shaded">52.53</td></tr>
+                <tr><td class="sticky-col-1 mporange">CED</td><td class="sticky-col-2">small</td><td>22M</td><td class="shaded">56.01</td><td>67.50</td><td>56.65</td><td>56.87</td><td>60.76</td><td>57.88</td><td>58.15</td><td class="shaded">59.63</td><td>50.49</td><td>80.23</td><td class="shaded best">91.20</td><td>54.67</td><td>84.67</td><td>58.00</td><td>96.12</td><td>8.05</td><td>12.15</td><td>10.26</td><td>13.14</td><td>72.89</td><td>49.08</td><td class="shaded">52.38</td></tr>
+                <tr><td class="sticky-col-1 mporange">CED</td><td class="sticky-col-2">base</td><td>86M</td><td class="shaded">56.71</td><td>67.60</td><td>56.67</td><td>56.95</td><td>60.99</td><td class="shaded best">57.89</td><td>58.45</td><td class="shaded">59.76</td><td>52.26</td><td>90.08</td><td>89.20</td><td>57.64</td><td>85.95</td><td>60.20</td><td>95.84</td><td>8.12</td><td>11.57</td><td>10.03</td><td>13.63</td><td>72.14</td><td>50.91</td><td class="shaded">53.66</td></tr>
+
+                <!-- DaSheng -->
+                <tr><td class="sticky-col-1 mporange">DaSheng</td><td class="sticky-col-2">base</td><td>85M</td><td class="shaded">56.37</td><td>69.25</td><td>57.28</td><td>56.02</td><td>60.95</td><td>56.39</td><td>55.82</td><td class="shaded">59.28</td><td>74.42</td><td>99.10</td><td>46.84</td><td>63.53</td><td>92.06</td><td>61.37</td><td>98.30</td><td>5.64</td><td>4.45</td><td>11.74</td><td>20.08</td><td>74.93</td><td>42.42</td><td class="shaded">53.45</td></tr>
+                <tr><td class="sticky-col-1 mporange">DaSheng</td><td class="sticky-col-2">0.6B</td><td>630M</td><td class="shaded">55.43</td><td>68.35</td><td>56.76</td><td>55.35</td><td>59.85</td><td>56.34</td><td>55.41</td><td class="shaded">58.68</td><td>75.14</td><td class="shaded best">99.25</td><td>45.41</td><td>57.26</td><td>91.11</td><td>58.23</td><td>97.59</td><td>5.27</td><td>4.28</td><td>11.69</td><td>14.68</td><td>75.78</td><td>42.63</td><td class="shaded">52.18</td></tr>
+                <tr><td class="sticky-col-1 mporange">DaSheng</td><td class="sticky-col-2">1.2B</td><td>1130M</td><td class="shaded">55.91</td><td>69.52</td><td>57.06</td><td>55.82</td><td>61.14</td><td>56.32</td><td>56.01</td><td class="shaded">59.31</td><td>73.18</td><td>99.00</td><td>48.89</td><td>58.16</td><td>90.79</td><td>55.50</td><td>97.99</td><td>5.42</td><td>4.52</td><td>11.76</td><td>17.32</td><td class="shaded best">75.99</td><td>44.11</td><td class="shaded">52.51</td></tr>
+
+                <!-- FISHER -->
+                <tr><td class="sticky-col-1 mpred">FISHER</td><td class="sticky-col-2">tiny</td><td>5.5M</td><td class="shaded">61.12</td><td>70.86</td><td>58.76</td><td>56.40</td><td>58.62</td><td>53.64</td><td>56.37</td><td class="shaded">59.11</td><td>85.31</td><td>98.72</td><td>83.84</td><td class="best">75.79</td><td>92.58</td><td>71.81</td><td class="best">99.20</td><td>11.90</td><td class="best">23.58</td><td>21.10</td><td>28.24</td><td>72.36</td><td class="best">56.21</td><td class="shaded">63.13</td></tr>
+                <tr><td class="sticky-col-1 mpred">FISHER</td><td class="sticky-col-2">mini</td><td>10M</td><td class="shaded">61.43</td><td>70.19</td><td>58.40</td><td>57.62</td><td>61.07</td><td>54.59</td><td>55.75</td><td class="shaded">59.60</td><td>86.02</td><td>99.05</td><td>84.74</td><td>75.74</td><td>93.20</td><td>70.09</td><td>98.55</td><td class="shaded best">13.69</td><td>20.52</td><td class="best">22.95</td><td class="best">29.97</td><td>72.01</td><td>55.73</td><td class="shaded">63.25</td></tr>
+                <tr><td class="sticky-col-1 mpred">FISHER</td><td class="sticky-col-2">small</td><td>22M</td><td class="shaded best">62.23</td><td>71.04</td><td>59.48</td><td class="best">59.64</td><td>62.63</td><td>55.62</td><td>58.46</td><td class="shaded">61.15</td><td class="shaded best">90.23</td><td>98.96</td><td>86.77</td><td>72.61</td><td class="best">95.86</td><td class="shaded best">76.35</td><td>99.08</td><td>12.72</td><td>18.35</td><td>17.42</td><td>25.52</td><td>74.90</td><td>54.29</td><td class="shaded best">63.31</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="legend">
+        <!-- <div class="legend-item"><span class="mpblue">■</span> Speech Encoders</div> -->
+        <div class="legend-item"><span class="mporange">■</span> Audio Encoders</div>
+        <!-- <div class="legend-item"><span class="mppurple">■</span> Signal Encoders</div> -->
+        <div class="legend-item"><span class="mpred">■</span> Our Model (FISHER)</div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.sortable').forEach(header => {
+            header.addEventListener('click', () => {
+                const table = document.getElementById('rmisTable');
+                const tbody = table.tBodies[0];
+                const colIndex = parseInt(header.getAttribute('data-sort'));
+                const rows = Array.from(tbody.rows);
+                
+                const isAscending = header.classList.contains('sort-asc');
+                
+                rows.sort((a, b) => {
+                    let valA = a.cells[colIndex].textContent.trim();
+                    let valB = b.cells[colIndex].textContent.trim();
+                    
+                    let numA = parseFloat(valA.replace(/[^\d.-]/g, ''));
+                    let numB = parseFloat(valB.replace(/[^\d.-]/g, ''));
+                    
+                    if (!isNaN(numA) && !isNaN(numB)) {
+                        return isAscending ? numA - numB : numB - numA;
+                    }
+                    return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                });
+
+                document.querySelectorAll('.sortable').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+                header.classList.toggle('sort-asc', !isAscending);
+                header.classList.toggle('sort-desc', isAscending);
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+    </script>
+    </div>
+</body>
+</html>

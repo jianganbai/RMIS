@@ -1,0 +1,15 @@
+torch
+torchaudio
+torchmetrics
+pyod
+pandas
+tqdm
+soundfile
+timm
+omegaconf
+hyperpyyaml
+huggingface_hub
+einops
+librosa
+transformers
+easydict

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage | RMIS Benchmark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .code-block { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 1.25rem; overflow-x: auto; border: 1px solid #334155; letter-spacing: 1px; }
+        .step-circle { width: 32px; height: 32px; background: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; }
+        .indented { padding-left: 40px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold tracking-tighter">RMIS <span class="text-blue-400">Benchmark</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                    <a href="leaderboard.html" class="hover:text-blue-400 transition">Leaderboard</a>
+                    <a href="download.html" class="hover:text-blue-400 transition">Download</a>
+                    <a href="usage.html" class="text-blue-400 font-bold">Usage</a>
+                    <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-400 transition"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4">⚙️ Usage Guide</h1>
+            <p class="text-gray-400 max-w-2xl leading-relaxed">
+                Meta-data setup and evaluating both integrated models and your own models.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+
+        <!-- 1. Path Setup -->
+        <section class="mb-16">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-folder-open text-blue-600 text-2xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Path Setup & Meta-Data Generation</h2>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                <p class="text-gray-700 mb-6">
+                    After downloading the code, the data (convert to 10s wavs) and model checkpoints, fill up the paths to these datasets and checkpoints in <code class="text-blue-600">conf/basic.yaml</code>. Then generate the meta-data for all datasets by running:
+                </p>
+                <div class="code-block mb-4">
+                    <span class="text-gray-500"># Generate meta-data for all RMIS datasets</span><br>
+                    <span class="text-blue-400">python</span> -m runner.meta_data.rmis --ds all
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Test Integrated Models -->
+        <section class="mb-16">
+            <div class="flex items-center mb-6" id="test-integrated-model">
+                <i class="fas fa-bolt text-yellow-500 text-2xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Test Integrated Models</h2>
+            </div>
+            
+            <div class="prose max-w-none text-gray-700 mb-8">
+                <p>Now you can test integrated models by easily running <strong>one command!</strong></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-purple-800 mb-3 uppercase text-sm tracking-wider">Standard Evaluation (RMIS Score)</h3>
+                    <p class="text-sm text-gray-600 mb-4">Calculate the RMIS score across all datasets.</p>
+                    <div class="code-block text-xs">
+                        <span class="text-blue-400">python</span> -m rmis.scripts.reg_all \<br>
+                        <span class="indented">--model_conf rmis/model_conf/{model}/{variant}.yaml \<br></span>
+                        <span class="indented">--rel_exp_dir {rel_exp_dir} \<br></span>
+                        <span class="indented">--gpu 0,1,2,3</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-wider">Additional Multi-Split Experiment</h3>
+                    <p class="text-sm text-gray-600 mb-4">Evaluate using multi-split ratios to test generalization.</p>
+                    <div class="code-block text-xs">
+                        <span class="text-blue-400">python</span> -m rmis.scripts.multi_split_all \<br>
+                            <span class="indented">--model_conf rmis/model_conf/{model}/{variant}.yaml \<br></span>
+                            <span class="indented">--rel_exp_dir {rel_exp_dir} \<br></span>
+                            <span class="indented">--gpu 0,1,2,3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 bg-amber-50 rounded-lg p-4 border border-amber-200 flex items-start">
+                <i class="fas fa-info-circle text-amber-600 mt-1 mr-3"></i>
+                <p class="text-sm text-amber-800">
+                    <strong>Note:</strong> RMIS is designed for Linux. Windows may encounter some pathing compatibility issues.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. Test Your Model -->
+        <section class="mb-16">
+            <div class="flex items-center mb-6" id="test-your-model">
+                <i class="fas fa-vial text-purple-600 text-2xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Test Your Model</h2>
+            </div>
+
+            <div class="prose max-w-none text-gray-700 mb-8">
+                <p>The RMIS codebase is designed to readily integrate new models. You can test your model on the RMIS benchmark in just <strong>two steps!</strong></p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="mb-10">
+                <div class="flex items-center mb-4">
+                    <div class="step-circle">1</div>
+                    <h3 class="text-xl font-semibold">Implement your model</h3>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                    <p class="text-gray-700 mb-4">Create a folder for your model <code class="text-blue-600">models/your-model</code>, add the source code of your model inside.<br>Then define a model wrapper in <code class="text-blue-600">models/your-model/main.py</code>` to wrap your model for RMIS:</p>
+                    <div class="code-block text-sm">
+                        <span class="text-purple-400">class</span> <span class="text-green-400">MyAwesomeModel</span>(nn.Module):<br>
+                        <span class="indented"></span><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(self, **kwargs):<br>
+                            <span class="indented"></span><span class="indented"></span>self.model = mymodel(**kwargs)<br>
+
+                        <span class="indented"></span><span class="text-purple-400">def</span> <span class="text-blue-400">forward</span>(self, x: torch.Tensor):<br>
+                            <span class="indented"></span><span class="indented text-gray-500"># x is the input signal, can be wav, stft, fbank, etc. specify in model_conf</span><br>
+                            <span class="indented"></span><span class="indented"></span>x = self.model(x)<br>
+                            <span class="indented"></span><span class="indented"></span><span class="text-purple-400">return</span> {<span class="text-green-300">'embedding'</span>: x}
+                    </div>
+                    <p class="mt-4 text-gray-700 mb-4">Then, register your model in <code class="text-blue-600 font-medium">models/model_wrapper.py</code>. You can refer to how integrated models are implemented.</p>
+                    <div class="code-block text-sm">
+                        <span class="indented"></span><span class="text-purple-400">elif</span> args['model_name'] == 'your-model':<br>
+                        <span class="indented"></span><span class="indented text-purple-400">from</span> <span class="text-green-300">models.your-model.main</span> <span class="text-purple-400">import</span> <span class="text-green-300">MyAwesomeModel</span><br>
+                        <span class="indented"></span><span class="indented"></span>net = <span class="text-green-400">MyAwesomeModel</span>(**model_conf)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-10">
+                <div class="flex items-center mb-4">
+                    <div class="step-circle">2</div>
+                    <h3 class="text-xl font-semibold">Define Inference Configurations</h3>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                    <p class="text-gray-700 mb-4">Create a folder in <code class="text-blue-600">rmis/model_conf</code> and add inference configurations in <code class="text-blue-600">rmis/model_conf/your-model</code>. It should contain five parts as presented in <code class="text-blue-600">template.yaml</code>. You can also refer to the configurations of integrated models.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="border-l-4 border-slate-300 pl-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Data</h4>
+                            <p class="text-xs text-gray-500">Sample rate, feature type (wav, stft, fbank).</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Preprocess</h4>
+                            <p class="text-xs text-gray-500">Spectrogram normalization.</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Model</h4>
+                            <p class="text-xs text-gray-500">Model name, model configurations (for setting up your model).</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Inference</h4>
+                            <p class="text-xs text-gray-500">Batch size.</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Dataset Specific</h4>
+                            <p class="text-xs text-gray-500">Adaptive settings for specific datasets within the benchmark.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center bg-slate-900 rounded-xl p-8 text-white">
+                <h3 class="text-xl font-bold mb-4">Ready to Evaluate?</h3>
+                <p class="text-slate-400 mb-6">Once you have completed all above steps, you can test your model with a single command!</p>
+                <div class="code-block text-sm inline-block mx-auto text-left">
+                    <span class="text-blue-400">python</span> -m rmis.scripts.reg_all --model_conf rmis/model_conf/{your-model}/{variant}.yaml --gpu 0,1,2,3
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-gray-200 py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-500 text-sm mb-4">Released under the MIT License.</p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-600"><i class="fab fa-github fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

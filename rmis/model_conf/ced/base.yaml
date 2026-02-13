@@ -1,0 +1,25 @@
+# data
+sample_rate: 16000
+feat_type: fbank  # wav, fbank
+fbank_conf:
+  impl: torchaudio  # kaldi, torchaudio
+  num_mel_bins: 64
+  frame_length: 32
+  frame_shift: 10
+  f_min: 0
+  f_max: 8000
+  center: True
+  top_db: 120
+  freq_first: True
+
+# preprocess
+norm: False
+
+# model
+model_name: ced
+model_conf:
+  scale: base
+  ckpt: /path/to/local/ced/base
+
+# inference
+batch_size: 48

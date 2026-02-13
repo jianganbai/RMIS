@@ -1,0 +1,55 @@
+# data
+sample_rate: 16000
+feat_type: stft  # wav, stft, fbank
+stft_conf:
+  impl: torchaudio  # kaldi, torchaudio
+  frame_length: 25
+  frame_shift: 10
+  center: False
+
+# preprocess
+norm: True
+norm_conf:
+  norm_type: all  # all, temporal
+  MEAN: -3.017344307886898
+  STD: 2.1531635155379805
+  coeff: 2
+
+# model
+model_name: fisher
+model_conf:
+  ckpt: /path/to/local/fisher/small
+  MEAN: 0.0
+  STD: 0.5
+
+# inference
+batch_size: 16
+
+# dataset specific
+ds_spcf:
+  idmt_air:
+    sample_rate: 48000
+  idmt_engine:
+    sample_rate: 44100
+  wt_plane_gearbox:
+    sample_rate: 48000
+  mafaulda_sound:
+    sample_rate: 50000
+  mafaulda_vib:
+    sample_rate: 50000
+  sdust_bearing:
+    sample_rate: 25600
+  sdust_gear:
+    sample_rate: 25600
+  umged_sound:
+    sample_rate: 51200
+  umged_vib:
+    sample_rate: 51200
+  umged_vol:
+    sample_rate: 51200
+  umged_cur:
+    sample_rate: 51200
+  pu_vib:
+    sample_rate: 64000
+  pu_cur:
+    sample_rate: 64000

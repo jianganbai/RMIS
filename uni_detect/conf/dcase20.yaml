@@ -1,0 +1,8 @@
+scale: sec  # mt2set, mt, sec
+domsp: none
+detector: ['knn']
+
+knn_conf:
+  n_neighbors: 1
+  metric: cosine
+

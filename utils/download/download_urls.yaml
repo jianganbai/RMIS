@@ -1,0 +1,37 @@
+dcase20:
+  dev_data: https://zenodo.org/records/3678171
+  eval_data:
+    train: https://zenodo.org/records/3727685
+    test: https://zenodo.org/records/3841772
+dcase21:
+  dev_data: https://zenodo.org/records/4562016
+  eval_data:
+    train: https://zenodo.org/records/4660992
+    test: https://zenodo.org/records/4884786
+dcase22:
+  dev_data: https://zenodo.org/records/6355122
+  eval_data:
+    train: https://zenodo.org/records/6462969
+    test: https://zenodo.org/records/6586456
+dcase23:
+  dev_data: https://zenodo.org/records/7882613
+  eval_data:
+    train: https://zenodo.org/records/7830345
+    test: https://zenodo.org/records/7860847
+dcase24:
+  dev_data: https://zenodo.org/records/10902294
+  eval_data:
+    train: https://zenodo.org/records/11259435
+    test: https://zenodo.org/records/11363076
+dcase25:
+  dev_data: https://zenodo.org/records/15097779
+  eval_data:
+    train: https://zenodo.org/records/15392814
+    test: https://zenodo.org/records/15519362
+iica: https://zenodo.org/records/7551606
+iiee: https://zenodo.org/records/7551261
+wtpg: https://github.com/Liudd-BJUT/WT-planetary-gearbox-dataset
+mafaulda: https://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip
+sdust: https://github.com/JRWang-SDUST/SDUST-Dataset
+umged: https://github.com/LeeJMJM/UM-GearEccDataset
+pu: https://groups.uni-paderborn.de/kat/BearingDataCenter/

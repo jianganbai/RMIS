@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMIS Benchmark | Download</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .card { background: white; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .code-block {
+            background-color: #2d3748; /* slate-800 */
+            color: #e2e8f0; /* slate-200 */
+            padding: 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold tracking-tighter">RMIS <span class="text-blue-400">Benchmark</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                    <a href="leaderboard.html" class="hover:text-blue-400 transition">Leaderboard</a>
+                    <a href="download.html" class="text-blue-400 transition">Download</a>
+                    <a href="usage.html" class="hover:text-blue-400 transition">Usage</a>
+                    <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-400 transition"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Download Specific -->
+    <header class="gradient-bg text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4">⬇️ Download RMIS Assets</h1>
+            <p class="text-gray-400 max-w-2xl leading-relaxed">
+                Get the <strong>code, data, and models</strong> to start evaluation on RMIS!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Download Code Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-code text-blue-600 mr-3"></i> Download Code
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    First clone the repository and install necessary dependencies.
+                </p>
+                <div class="code-block mt-4">
+                    <pre><code>git clone https://github.com/jianganbai/RMIS.git
+cd RMIS/
+pip install -r requirements.txt</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Data Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-database text-blue-600 mr-3"></i> Download Data
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    The RMIS benchmark is sourced from 13 public datasets: the DCASE datasets (<a href="https://dcase.community/challenge2020/task-unsupervised-detection-of-anomalous-sounds" class="text-blue-600 hover:underline">20</a>, <a href="https://dcase.community/challenge2021/task-unsupervised-detection-of-anomalous-sounds" class="text-blue-600 hover:underline">21</a>, <a href="https://dcase.community/challenge2022/task-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">22</a>, <a href="https://dcase.community/challenge2023/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">23</a>, <a href="https://dcase.community/challenge2024/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">24</a>, <a href="https://dcase.community/challenge2025/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">25</a>), <a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-compressed-air.html" class="text-blue-600 hover:underline">IICA</a>, <a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-electric-engine.html" class="text-blue-600 hover:underline">IIEE</a>, <a href="https://github.com/Liudd-BJUT/WT-planetary-gearbox-dataset" class="text-blue-600 hover:underline">WTPG</a>, <a href="https://www02.smt.ufrj.br/~offshore/mfs/page_01.html#SEC2" class="text-blue-600 hover:underline">MaFaulDa</a>, <a href="https://github.com/JRWang-SDUST/SDUST-Dataset" class="text-blue-600 hover:underline">SDUST</a>, <a href="https://github.com/LeeJMJM/UM-GearEccDataset" class="text-blue-600 hover:underline">UMGED</a> and <a href="https://groups.uni-paderborn.de/kat/BearingDataCenter/" class="text-blue-600 hover:underline">PU</a>. For the convenience of users, we host all preprocessed benchmark data on <a href="https://cloud.tsinghua.edu.cn/d/eb1f8c37f3264812a53c/" class="text-blue-600 hover:underline">Tsinghua Cloud</a> (password: <code class="bg-gray-200 px-1 rounded text-sm text-gray-800">RMIS_dataset</code>), which is available for use immediately. If there is any infringement, please contact us for removal. To download data from Tsinghua Cloud, first download all zip files and organize them in the following structure:
+                </p>
+                <div class="code-block mt-4">
+                    <pre><code>top_dir/
+├── check_sums.md5
+├── iiee/
+│   └── iiee.zip
+├── mafaulda_sound/
+│   └── mafaulda_sound.zip
+└── dcase24/
+    └── dev_data/
+        └── dev_ToyCar.zip</code></pre>
+                </div>
+                <p>
+                    Then run the following script to conduct md5 checksum and unzip these files.
+                </p>
+                <div class="code-block mt-4">
+                    <pre><code>bash utils/scripts/extract_tsinghua_cloud_data.sh path_to_top_dir</code></pre>
+                </div>
+                <p>
+                    We also provide setup guidelines for downloading from each dataset source. Please first follow the instructions in <a href="https://github.com/jianganbai/RMIS/blob/main/utils/download/README.md" class="text-blue-600 hover:underline">utils/download/README.md</a> for data download and then refer to <a href="https://github.com/jianganbai/RMIS/blob/main/utils/preprocess/README.md" class="text-blue-600 hover:underline">utils/preprocess/README.md</a> for preprocessing instructions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Download Model Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-brain text-blue-600 mr-3"></i> Download Model
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    The RMIS benchmark currently integrates 6 models for evaluation: <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/audiomae/README.md" class="text-blue-600 hover:underline">AudioMAE</a>, <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/beats/README.md" class="text-blue-600 hover:underline">BEATs</a>, <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/eat/README.md" class="text-blue-600 hover:underline">EAT</a>, <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/ced/README.md" class="text-blue-600 hover:underline">CED</a>, <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/dasheng/README.md" class="text-blue-600 hover:underline">DaSheng</a> and <a href="https://github.com/jianganbai/RMIS/blob/main/rmis/model_conf/fisher/README.md" class="text-blue-600 hover:underline">FISHER</a>. More models will be online soon. All models can be run independently. To setup the evaluation config for a model, please refer to the respective README file within the model config folder <code class="bg-gray-200 px-1 rounded text-sm text-gray-800">rmis/model_conf/your-interested-model</code>.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-gray-200 py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-500 text-sm mb-4">Released under the MIT License.</p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-600"><i class="fab fa-github fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

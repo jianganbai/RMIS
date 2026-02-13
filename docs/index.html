@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMIS Benchmark | Representation of M5 Industrial Signals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .card { background: white; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold tracking-tighter">RMIS <span class="text-blue-400">Benchmark</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                    <a href="leaderboard.html" class="hover:text-blue-400 transition">Leaderboard</a>
+                    <a href="download.html" class="hover:text-blue-400 transition">Download</a>
+                    <a href="usage.html" class="hover:text-blue-400 transition">Usage</a>
+                    <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-400 transition"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-16 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">RMIS: Representation of M5 Industrial Signals</h1>
+            <p class="text-lg text-gray-300 mb-8 max-w-5xl mx-auto leading-relaxed">
+                A comprehensive benchmark for evaluating foundation models on multi-modal series-like industrial signals.
+            </p>
+            
+            <!-- Badges -->
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="https://arxiv.org/abs/2507.16696"><img src="https://img.shields.io/badge/arXiv-2507.16696-blueviolet?logo=arxiv" alt="Paper"></a>
+                <a href="https://github.com/torvalds/linux"><img src="https://img.shields.io/badge/Platform-Linux-yellow?logo=Linux" alt="Platform"></a>
+                <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-orange?logo=Python" alt="Python"></a>
+                <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/Pytorch-2.0+-green?logo=Pytorch" alt="Pytorch"></a>
+                <a href="https://github.com/jianganbai/RMIS"><img src="https://img.shields.io/badge/GitHub-RMIS-red?logo=GitHub" alt="RMIS"></a>
+                <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- News Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-bullhorn text-blue-600 mr-3"></i> 🚀 News
+            </h2>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-bold min-w-[100px] text-blue-800">[2026.2.13]</span>
+                        <span style="padding-left: 5px;">The RMIS benchmark is released.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold min-w-[100px] text-blue-800">[2025.7.23]</span>
+                        <span style="padding-left: 6px;">FISHER-tiny, FISHER-mini and FISHER-small are released.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-chart-bar text-blue-600 mr-3"></i> 📊 Overview
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    <strong>RMIS</strong> is a comprehensive benchmark for evaluating foundation models on M5 (<u>multi-modal</u>, <u>multi-sampling-rate</u>, <u>multi-scale</u>, <u>multitask</u>, and <u>minim fault</u>) series-like industrial signals. The RMIS benchmark comprises <strong>6 anomaly detection</strong> datasets and <strong>13 fault diagnosis</strong> datasets, covering <strong>4 distinct modalities</strong> (sound, vibration, voltage, current) with an unprecedented volume of <strong>1.2k hours</strong>. By open-sourcing RMIS, we hope to provide a <strong>fair, convincing and off-the-shelf</strong> benchmark for the community to easily evaluate their signal models.
+                </p>
+            </div>
+
+            <div class="bg-indigo-900 text-white py-6 px-4 mb-16">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h2 class="text-3xl font-extrabold mb-4">View the leaderboard and join us!</h2>
+                    <a href="leaderboard.html" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        View Leaderboard <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- AD Table -->
+            <div class="mb-10">
+                <h3 class="text-lg font-semibold mb-4 text-slate-800">Anomaly Detection</h3>
+                <div class="prose max-w-none text-gray-700 leading-relaxed mb-4">
+                    <p>
+                        Anomaly detection is to predict whether a signal is anomalous or not <strong>without any prior knowledge of anomaly</strong>. The anomaly detection part of RMIS is sourced from the annual DCASE challenge, where we follow the <a href="https://dcase.community/challenge2025/" class="text-blue-600 hover:underline">DCASE challenge rules</a> to evaluate the model.
+                    </p>
+                </div>
+                <div class="overflow-x-auto card">
+                    <table class="min-w-full text-left text-sm">
+                        <thead class="bg-slate-100 border-b border-gray-200">
+                            <tr>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Dataset</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Modality</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Sampling Rate</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Volume</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Num Machines</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2020/task-unsupervised-detection-of-anomalous-sounds">DCASE 2020</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">16 kHz</td><td class="px-3 py-2">153 h</td><td class="px-3 py-2">6</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2021/task-unsupervised-detection-of-anomalous-sounds">DCASE 2021</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">16 kHz</td><td class="px-3 py-2">165 h</td><td class="px-3 py-2">7</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2022/task-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring">DCASE 2022</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">16 kHz</td><td class="px-3 py-2">139 h</td><td class="px-3 py-2">7</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2023/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring">DCASE 2023</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">16 kHz</td><td class="px-3 py-2">50 h</td><td class="px-3 py-2">14</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2024/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring">DCASE 2024</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2 hover:underline">16 kHz</td><td class="px-3 py-2">49 h</td><td class="px-3 py-2">16</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://dcase.community/challenge2025/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring">DCASE 2025</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">16 kHz</td><td class="px-3 py-2">45 h</td><td class="px-3 py-2">15</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FD Table -->
+            <div class="mb-10">
+                <h3 class="text-lg font-semibold mb-4 text-slate-800">Fault Diagnosis</h3>
+                <div class="prose max-w-none text-gray-700 leading-relaxed mb-4">
+                    <p>
+                        Fault is to identify the specific fault type (health state) of a signal with labeled data provided in advance. The fault diagnosis part of RMIS is sourced from 7 public fault diagnosis datasets. To ensure proper difficulties for evaluation, we introduce <strong>sealed train-test split</strong>, where segments from the same channel of the same recording can not appear in both train and test sets.
+                    </p>
+                </div>
+                <div class="overflow-x-auto card">
+                    <table class="min-w-full text-left text-sm">
+                        <thead class="bg-slate-100 border-b border-gray-200">
+                            <tr>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Dataset</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Modality</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Sampling Rate</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Volume</th>
+                                <th class="px-3 py-2 font-semibold text-gray-700 uppercase text-xs">Task</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-compressed-air.html">IICA</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">48 kHz</td><td class="px-3 py-2">47 h</td><td class="px-3 py-2">Compressor Leakage</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-electric-engine.html">IIEE</a></td><td class="px-3 py-2">Sound</td><td class="px-3 py-2">44.1 kHz</td><td class="px-3 py-2">1 h</td><td class="px-3 py-2">Electric Engine Fault</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://github.com/Liudd-BJUT/WT-planetary-gearbox-dataset">WTPG</a></td><td class="px-3 py-2">Vibration</td><td class="px-3 py-2">48 kHz</td><td class="px-3 py-2">14 h</td><td class="px-3 py-2">Planetary Gearbox Fault</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://www02.smt.ufrj.br/~offshore/mfs/page_01.html#SEC2">MaFaulDa</a></td><td class="px-3 py-2">Sound, Vibration</td><td class="px-3 py-2">50 kHz</td><td class="px-3 py-2">19 h</td><td class="px-3 py-2">Bearing Fault</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://github.com/JRWang-SDUST/SDUST-Dataset">SDUST</a></td><td class="px-3 py-2">Vibration</td><td class="px-3 py-2">25.6 kHz</td><td class="px-3 py-2">42 h</td><td class="px-3 py-2">Bearing / Gear Fault</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://github.com/LeeJMJM/UM-GearEccDataset">UMGED</a></td><td class="px-3 py-2">Sound, Vibration, Voltage, Current</td><td class="px-3 py-2">51.2 kHz</td><td class="px-3 py-2">469 h</td><td class="px-3 py-2">Gear Eccentricity</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="px-3 py-2 font-bold text-blue-700 hover:underline"><a href="https://groups.uni-paderborn.de/kat/BearingDataCenter/">PU</a></td><td class="px-3 py-2">Vibration, Current</td><td class="px-3 py-2">64 kHz</td><td class="px-3 py-2">9 h</td><td class="px-3 py-2">Bearing Fault</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-chart-bar text-blue-600 mr-3"></i> 🌟 Motivation
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p style="margin-bottom: 25px;">
+                    The RMIS benchmark is launched in conjunction with our <a href="https://github.com/jianganbai/FISHER" class="text-blue-600 hover:underline">FISHER</a> model, which is the first multi-modal <strong><u>F</u></strong>oundation model for <strong><u>I</u></strong>ndustrial <strong><u>S</u></strong>ignal compre<strong><u>HE</u></strong>nsive <strong><u>R</u></strong>epresentation. Our pioneering endeavor has led to an exciting discovery: <strong><u>M5 industrial signals, though hugely heterogenous, can surprisingly be modeled by an universal foundation model. This model, powered by extensive training data, exhibits an unprecedented level of generalization across various modalities and tasks, and thereby opening up the scaling era for industrial signals.</u></strong>
+                </p>
+                <p style="margin-bottom: 20px;">
+                    Superior modeling calls for more comprehensive evaluation. Although there are dozens of open-sourced signal datasets, there has never been an open-sourced and comprehensive benchmark that ensembles all these datasets, and the experiment setups of these datasets in previous works differ more or less. To this end, RMIS is designed to be a fair, convincing and off-the-shelf benchmark with the following key features:
+                </p>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 0.9em; display: flex; align-items: flex-start;">
+                        <div style="font-size: 1.5em; color: #007bff; margin-right: 15px;">&#10003;</div>
+                        <div>
+                            <h3 style="color: #007bff; margin-top: 0;"><strong>Open-source</strong></h3>
+                            <p style="font-size: 1em; line-height: 1.5">
+                                RMIS is completely open-sourced. We warmly welcome fellow researchers to test their models on our benchmarks!
+                            </p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 0.9em; display: flex; align-items: flex-start;">
+                        <div style="font-size: 1.5em; color: #28a745; margin-right: 15px;">&#9733;</div>
+                        <div>
+                            <h3 style="color: #28a745; margin-top: 0;"><strong>Unprecedented Scale</strong></h3>
+                            <p style="font-size: 1em; line-height: 1.5">
+                                RMIS comprises both anomaly detection and fault diagnosis datasets, covering 4 modalities with an unprecedented volume of 1.2k hours.
+                            </p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 0.9em; display: flex; align-items: flex-start;">
+                        <div style="font-size: 1.5em; color: #ffc107; margin-right: 15px;">&#128274;</div>
+                        <div>
+                            <h3 style="color: #ffc107; margin-top: 0;"><strong>Sealed Train-Test Split</strong></h3>
+                            <p style="font-size: 1em; line-height: 1.5">
+                                Most previous works adopt random train-test splits, which yield over-optimistic results due to signal stationarity. In RMIS, we adopt sealed train-test split, where segments from the same channel of the same recording cannot appear in both train and test sets.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section class="mb-2">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-chart-bar text-blue-600 mr-3"></i> 🚩 Getting Started
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    The RMIS pipeline can be setup in two streamlined steps:
+                </p>
+            </div>
+        </section>
+
+        <!-- Download & Evaluation Section -->
+        <section class="mb-16 grid md:grid-cols-2 gap-8">
+            <!-- RMIS Download Block -->
+            <div class="card p-8 bg-white border border-gray-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-4 text-blue-900 leading-tight">
+                    ① <a href="download.html" class="hover:underline">RMIS Download</a>
+                </h3>
+                <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+                    Get started by cloning our repository, downloading the preprocessed 10s wav datasets (available on <strong>Tsinghua Cloud</strong>), and selecting from 6+ integrated models like BEATs and EAT.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="download.html" class="inline-block bg-blue-900 hover:bg-slate-800 text-white font-semibold py-2 px-6 rounded transition">
+                        Download Guide <i class="fas fa-book ml-2 text-xs"></i>
+                    </a>
+                    <a href="https://github.com/jianganbai/RMIS" class="inline-block bg-gray-100 hover:bg-gray-200 text-blue-900 font-semibold py-2 px-6 rounded transition">
+                        GitHub Repo <i class="fab fa-github ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RMIS Evaluation Block -->
+            <div class="card p-8 bg-slate-900 text-white">
+                <h3 class="text-xl font-bold mb-4 text-blue-400">
+                    ② <a href="usage.html" class="hover:underline">RMIS Evaluation</a>
+                </h3>
+                <p class="text-gray-300 mb-6 text-sm">
+                    RMIS is designed to disentangle model representations with downstream tasks. After local configurations, you can easily add and evaluate a model by <strong>simply one command!</strong>
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="usage.html#test-integrated-model" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-6 rounded transition">
+                        Test Integrated Models <i class="fas fa-chevron-right ml-2 text-xs"></i>
+                    </a>
+                    <a href="usage.html#test-your-model" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-6 rounded transition">
+                        Test Your Model <i class="fas fa-plus ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acknowledgements -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-gray-800">
+                <i class="fas fa-quote-left text-blue-600 mr-3"></i> Acknowledgements
+            </h2>
+
+            <div class="prose max-w-none text-gray-700 leading-relaxed mb-8">
+                <p>
+                    The RMIS benchmark is sourced from 13 public datasets: 
+                    <a href="https://dcase.community/challenge2020/task-unsupervised-detection-of-anomalous-sounds" class="text-blue-600 hover:underline">DCASE20</a>, 
+                    <a href="https://dcase.community/challenge2021/task-unsupervised-detection-of-anomalous-sounds" class="text-blue-600 hover:underline">DCASE21</a>, 
+                    <a href="https://dcase.community/challenge2022/task-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">DCASE22</a>, 
+                    <a href="https://dcase.community/challenge2023/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">DCASE23</a>, 
+                    <a href="https://dcase.community/challenge2024/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">DCASE24</a>, 
+                    <a href="https://dcase.community/challenge2025/task-first-shot-unsupervised-anomalous-sound-detection-for-machine-condition-monitoring" class="text-blue-600 hover:underline">DCASE25</a>, 
+                    <a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-compressed-air.html" class="text-blue-600 hover:underline">IICA</a>, 
+                    <a href="https://www.idmt.fraunhofer.de/en/publications/datasets/isa-electric-engine.html" class="text-blue-600 hover:underline">IIEE</a>, 
+                    <a href="https://github.com/Liudd-BJUT/WT-planetary-gearbox-dataset" class="text-blue-600 hover:underline">WTPG</a>, 
+                    <a href="https://www02.smt.ufrj.br/~offshore/mfs/page_01.html#SEC2" class="text-blue-600 hover:underline">MaFaulDa</a>, 
+                    <a href="https://github.com/JRWang-SDUST/SDUST-Dataset" class="text-blue-600 hover:underline">SDUST</a>, 
+                    <a href="https://github.com/LeeJMJM/UM-GearEccDataset" class="text-blue-600 hover:underline">UMGED</a> and 
+                    <a href="https://groups.uni-paderborn.de/kat/BearingDataCenter/" class="text-blue-600 hover:underline">PU</a>.
+                    We sincerely thank these contributors for open-sourcing their data. 
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-gray-800">
+                <i class="fas fa-quote-left text-blue-600 mr-3"></i> Citation
+            </h2>
+            <div>
+                <p class="mt-4 mb-4">
+                    The RMIS benchmark is licensed under the <strong>MIT License</strong>. Individual datasets within RMIS may have their own licenses. If you find RMIS useful in your research, please cite our work:
+                </p>
+            </div>
+
+            <div class="relative bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
+                    <span class="text-xs font-mono text-gray-400 uppercase tracking-widest">BibTeX</span>
+                </div>
+                <div class="p-6 overflow-x-auto">
+                    <pre class="text-sm font-mono text-blue-300 leading-relaxed"><code>@article{fan2025fisher,
+        title={FISHER: A Foundation Model for Multi-Modal Industrial Signal Comprehensive Representation},
+        author={Fan, Pingyi and Jiang, Anbai and Zhang, Shuwei and Lv, Zhiqiang and Han, Bing and Zheng, Xinhu and Liang, Wenrui and Li, Junjie and Zhang, Wei-Qiang and Qian, Yanmin and Chen, Xie and Lu, Cheng and Liu, Jia},
+        journal={arXiv preprint arXiv:2507.16696},
+        year={2025}
+        }</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-gray-200 py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-500 text-sm mb-4">Released under the MIT License.</p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="https://github.com/jianganbai/RMIS" class="hover:text-blue-600"><i class="fab fa-github fa-lg"></i></a>
+                <!-- <a href="jab22@mails.tsinghua.edu.cn" class="hover:text-blue-600"><i class="fas fa-envelope fa-lg"></i></a> -->
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
