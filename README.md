@@ -67,7 +67,7 @@ top_dir/
         └── dev_ToyCar.zip
 ```
 
-Then run the following script to conduct md5 checksum and unzip these files.
+Then run the following script to conduct md5 checksum and unzip these files. When using the extract script, UMGED split archives require 7z to be available in Bash. You can also extract the UMGED split archives with Bandizip or WinRAR.
 
 ```shell
 bash utils/scripts/extract_tsinghua_cloud_data.sh path_to_top_dir

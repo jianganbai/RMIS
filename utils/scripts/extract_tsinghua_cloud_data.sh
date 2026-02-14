@@ -91,10 +91,6 @@ resolve_path() {
         echo "$cleaned_path"
         return 0
     fi
-    if [[ "$cleaned_path" == $(basename $DATASET_DIR)/* ]]; then
-        echo "${BASE_DIR}/${cleaned_path}"
-        return 0
-    fi
     echo "${DATASET_DIR}/${cleaned_path}"
 }
 
@@ -103,6 +99,19 @@ extract_archive() {
     local dest_dir
     dest_dir="$(dirname "$archive_path")"
     case "$archive_path" in
+            *.zip.001)
+            local base_name
+            base_name="$(basename "$archive_path")"
+            local dataset_name="${base_name%.zip.001}"
+            if ! command -v 7z >/dev/null 2>&1; then
+                log_error "${dataset_name} extraction requires 7z, but 7z is not installed. Extraction aborted."
+                return 1
+            fi
+            7z x "$archive_path" -o"$dest_dir" -mmt=on >/dev/null
+            ;;
+        *.zip.0[0-9][0-9]|*.zip.[0-9][0-9][0-9])
+            log_info "Skipping split ZIP part: $archive_path (handled via .zip.001)"
+            ;;
         *.tar.gz|*.tgz)
             tar -xzf "$archive_path" -C "$dest_dir"
             ;;
@@ -116,11 +125,15 @@ extract_archive() {
             tar -xf "$archive_path" -C "$dest_dir"
             ;;
         *.zip)
-            if ! command -v unzip >/dev/null 2>&1; then
-                log_error "Cannot extract $archive_path because 'unzip' is not available."
-                return 1
+            if command -v 7z >/dev/null 2>&1; then
+                7z x "$archive_path" -o"$dest_dir" -mmt=on >/dev/null 2>>"$LOG_FILE"
+            else
+                if ! command -v unzip >/dev/null 2>&1; then
+                    log_error "Cannot extract $archive_path because neither '7z' nor 'unzip' is available."
+                    return 1
+                fi
+                unzip -q "$archive_path" -d "$dest_dir"
             fi
-            unzip -q "$archive_path" -d "$dest_dir"
             ;;
         *.7z)
             if ! command -v 7z >/dev/null 2>&1; then
