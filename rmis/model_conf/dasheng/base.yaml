@@ -1,0 +1,11 @@
+# data
+sample_rate: 16000
+feat_type: wav  # wav, fbank
+
+# model
+model_name: dasheng
+model_conf:
+  scale: base
+
+# inference
+batch_size: 64

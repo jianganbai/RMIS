@@ -1,0 +1,22 @@
+# data
+sample_rate: 16000
+feat_type: fbank  # wav, fbank
+fbank_conf:
+  impl: kaldi  # kaldi, torchaudio
+  num_mel_bins: 128
+  frame_length: 25
+  frame_shift: 10
+  dither: 0.0
+  window_type: povey
+  shift_15: True
+
+# preprocess
+norm: False  # normalize within network
+
+# model
+model_name: beats
+model_conf:
+  ckpt: /path/to/local/beats/iter3
+
+# inference
+batch_size: 32

@@ -1,0 +1,49 @@
+# data
+sample_rate: null  # input sampling rate
+feat_type: null  # can be wav, stft, fbank. see datasets/spec.py for detailed implementations.
+stft_conf:  # set if you are using stft, else delete. an example is provided as follows
+  impl: torchaudio  # kaldi, torchaudio
+  frame_length: 25
+  frame_shift: 10
+  center: False
+fbank_conf:  # set if you are using fbank, else delete. an example is provided as follows
+  impl: kaldi  # kaldi, torchaudio
+  num_mel_bins: 128
+  frame_length: 25
+  frame_shift: 10
+  dither: 0.0
+  window_type: hanning
+  htk_compat: True
+  use_energy: False
+
+# preprocess
+norm: False  # whether or not to normalize stft/fbank before model
+norm_conf:
+  norm_type: all  # all, temporal
+  MEAN: 0.0
+  STD: 1.0
+
+# model
+model_name: your-awesome-model
+model_conf: {}  # pass to your model by **kwargs
+
+# inference
+batch_size: 16
+
+# dataset specific
+# if your model supports special treatment for each dataset, such as adaptive sampling rate
+# set this part. will overwrite previous keys. else delete
+ds_spcf:
+  idmt_air: {}
+  idmt_engine: {}
+  wt_plane_gearbox: {}
+  mafaulda_sound: {}
+  mafaulda_vib: {}
+  sdust_bearing: {}
+  sdust_gear: {}
+  umged_sound: {}
+  umged_vib: {}
+  umged_vol: {}
+  umged_cur: {}
+  pu_vib: {}
+  pu_cur: {}

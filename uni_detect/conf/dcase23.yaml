@@ -1,0 +1,17 @@
+scale: sec  # mt2set, mt, sec
+domsp: min
+detector: ['knn']
+
+
+knn_conf:
+  n_neighbors: 1
+  metric: cosine
+  normalize: True
+  source:
+    n_neighbors: 1
+    metric: cosine
+    normalize: True
+  target:
+    n_neighbors: 1
+    metric: cosine
+    normalize: True

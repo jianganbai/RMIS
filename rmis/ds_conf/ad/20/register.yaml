@@ -1,0 +1,36 @@
+# path
+meta_data_dir: data/meta_data
+AD_conf_dir: uni_detect/conf/
+
+# datasets
+downstream: dcase
+ds_type: ng
+train_sets: ['dcase20']
+test_sets: ['dcase20']
+machine_type:  # restrictions: 'dev', 'eval', 'bearing', 'fan', ...
+  dcase20: []  # no restriction means all
+  dcase21: []
+  dcase22: []
+  dcase23: []
+  dcase24: []
+  dcase25: []
+
+# data
+input_duration: 10.0
+hop_duration: null  # None
+comple: pad  # pad, cycle
+sample_rate: 16000
+feat_type: null  # specify in model conf
+use_shard: False
+
+# preprocess
+norm: False
+
+# model
+model_name: null
+aggregation: mean
+emb_size: 0
+task: machine_section  # attribute, machine, machine_section, section
+
+# inference
+batch_size: 32
