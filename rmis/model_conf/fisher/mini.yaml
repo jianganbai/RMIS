@@ -41,7 +41,7 @@ ds_spcf:
     sample_rate: 25600
   sdust_gear:
     sample_rate: 25600
-  umged_microphone:
+  umged_sound:
     sample_rate: 51200
   umged_vib:
     sample_rate: 51200
