@@ -328,6 +328,9 @@ class Audio_DatasetNG(Dataset):
         self.comple = args.get('comple', 'pad')
         self.dt = 'train' if hop_size is None else 'test'
         self.args = copy.deepcopy(args)
+        self.norm = args.get('norm', False)
+        if self.norm:
+            self.normalizer = Normalizer(**args.get('norm_conf', {}))
 
         if ds.startswith('dcase'):
             assert isinstance(csv, str)
@@ -440,9 +443,13 @@ class Audio_DatasetNG(Dataset):
 
         if self.feat_type == 'stft':
             wav, valid_len = self.cal_stft(wav, valid_len)
+            if self.norm:
+                wav = self.normalizer(wav)
 
         elif self.feat_type == 'fbank':
             wav, valid_len = self.cal_fbank(wav, valid_len)
+            if self.norm:
+                wav = self.normalizer(wav)
 
         info['x'] = wav
         info['valid_len'] = valid_len
