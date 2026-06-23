@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## 🚀 News
+* **[2026.6.23]** FISHER has been accepted by IEEE TII. We have largely enlarged the experiment part. Please read the [final version](https://ieeexplore.ieee.org/abstract/document/11563541) for recent updates.
+* **[2026.2.13]** The RMIS benchmark is released.
 * **[2026.2.13]** The RMIS benchmark is released.
 * **[2025.7.23]** FISHER-tiny, FISHER-mini and FISHER-small are released.
 
@@ -200,7 +202,7 @@ python -m rmis.scripts.reg_all \
 ## 🏆 Leaderboard
 
 <div align="center">
-  <img src="docs/assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:65%; max-width: 1000px; margin-bottom: 15px;">
+  <img src="docs/assets/score.png" alt="Model Performances on the RMIS Benchmark" style="width:85%; max-width: 2000px; margin-bottom: 15px;">
 </div>
 
 Please visit the [RMIS Leaderboard](https://jianganbai.github.io/RMIS/leaderboard.html) for full results.
