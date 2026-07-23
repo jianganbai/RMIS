@@ -1,1 +1,17 @@
-*.sh text eol=lf
+# Normalize text files to LF in the repository and working tree.
+* text=auto eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.pt binary
+*.pth binary
+*.ckpt binary
+*.npz binary
+*.npy binary
+*.parquet binary

@@ -1,0 +1,54 @@
+# data
+input_duration: 0.18
+sample_rate: 16000
+feat_type: wav
+
+# model
+model_name: sundial
+model_conf:
+  ckpt: thuml/sundial-base-128m
+
+# inference
+batch_size: 64
+
+# dataset specific
+ds_spcf:
+  idmt_air:
+    input_duration: 0.06
+    sample_rate: 48000
+  idmt_engine:
+    input_duration: 0.065307
+    sample_rate: 44100
+  wt_plane_gearbox:
+    input_duration: 0.06
+    sample_rate: 48000
+  mafaulda_sound:
+    input_duration: 0.0576
+    sample_rate: 50000
+  mafaulda_vib:
+    input_duration: 0.0576
+    sample_rate: 50000
+  sdust_bearing:
+    input_duration: 0.1125
+    sample_rate: 25600
+  sdust_gear:
+    input_duration: 0.1125
+    sample_rate: 25600
+  umged_sound:
+    input_duration: 0.05625
+    sample_rate: 51200
+  umged_vib:
+    input_duration: 0.05625
+    sample_rate: 51200
+  umged_vol:
+    input_duration: 0.05625
+    sample_rate: 51200
+  umged_cur:
+    input_duration: 0.05625
+    sample_rate: 51200
+  pu_vib:
+    input_duration: 0.045
+    sample_rate: 64000
+  pu_cur:
+    input_duration: 0.045
+    sample_rate: 64000

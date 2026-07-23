@@ -1,0 +1,17 @@
+sample_rate: 16000
+feat_type: wav  # wav, fbank
+
+# model
+model_name: whisper
+model_conf:
+  n_mels: 80
+  n_audio_ctx: 1500
+  n_audio_state: 1024
+  n_audio_head: 16
+  n_audio_layer: 24
+  ckpt: Whisper/medium/encoder.pt
+  feat_aggre: mean_pool
+  freeze_encoder: True
+
+# inference
+batch_size: 16

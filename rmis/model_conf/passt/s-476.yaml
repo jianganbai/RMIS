@@ -1,0 +1,15 @@
+# data
+sample_rate: 32000
+feat_type: wav
+
+# preprocess
+norm: False
+
+# model
+model_name: passt
+model_conf:
+  ckpt: PaSST/passt-s-f128-p16-s10-ap.476-swa.pt
+  sample_rate: 32000
+
+# inference
+batch_size: 16

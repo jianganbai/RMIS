@@ -1,0 +1,16 @@
+# data
+sample_rate: 24000
+feat_type: wav
+
+# preprocess
+norm: False
+
+# model
+model_name: muq
+model_conf:
+  model_id: OpenMuQ/MuQ-large-msd-iter
+  weighted_sum: False
+  feat_aggre: mean_pool
+
+# inference
+batch_size: 20

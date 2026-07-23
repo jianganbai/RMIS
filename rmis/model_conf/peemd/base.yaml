@@ -1,0 +1,61 @@
+# data
+sample_rate: 16000
+feat_type: wav
+
+# preprocess
+norm: False
+norm_conf:
+  norm_type: all
+  MEAN: -3.017344307886898
+  STD: 2.1531635155379805
+  coeff: 2
+
+# model
+model_name: peemd
+model_conf:
+  k0: 8
+  stats_per_imf: 8
+  ensembles: 8
+  noise_std: 0.2
+  max_imfs: 8
+  max_sift: 8
+  tol: 0.05
+  pe_order: 3
+  pe_delay: 1
+  pe_th: 0.7
+  log_compress: True
+  per_sample_zscore: True
+  l2_normalize: True
+  num_proc: 1
+
+# inference
+batch_size: 24
+
+# dataset specific
+ds_spcf:
+  idmt_air:
+    sample_rate: 48000
+  idmt_engine:
+    sample_rate: 44100
+  wt_plane_gearbox:
+    sample_rate: 48000
+  mafaulda_sound:
+    sample_rate: 50000
+  mafaulda_vib:
+    sample_rate: 50000
+  sdust_bearing:
+    sample_rate: 25600
+  sdust_gear:
+    sample_rate: 25600
+  umged_microphone:
+    sample_rate: 51200
+  umged_vib:
+    sample_rate: 51200
+  umged_vol:
+    sample_rate: 51200
+  umged_cur:
+    sample_rate: 51200
+  pu_vib:
+    sample_rate: 64000
+  pu_cur:
+    sample_rate: 64000

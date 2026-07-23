@@ -108,7 +108,7 @@ We also provide guidelines on extracting from each original data source. Please 
 
 ### Model
 
-The RMIS benchmark currently integrates 6 models for evaluation: [AudioMAE](rmis/model_conf/audiomae/README.md), [BEATs](rmis/model_conf/beats/README.md), [EAT](rmis/model_conf/eat/README.md), [CED](rmis/model_conf/ced/README.md), [DaSheng](rmis/model_conf/dasheng/README.md) and [FISHER](rmis/model_conf/fisher/README.md). More models will be online soon. All models can be run independently. To setup the evaluation config for a model, please refer to the respective README file within the model config folder `rmis/model_conf/your-interested-model`.
+The RMIS benchmark currently integrates 24 baseline encoders together with [FISHER](rmis/model_conf/fisher/README.md) for evaluation. All models can be run independently. To set up the evaluation config for a model, please refer to the respective README file within the model config folder `rmis/model_conf/your-interested-model`.
 
 
 ## ⚙️ Usage

@@ -1,0 +1,45 @@
+# data
+sample_rate: 16000
+feat_type: wav
+
+# preprocess
+norm: False
+
+# model
+model_name: echo
+model_conf:
+  ckpt: ECHO/ECHO-small.pth
+  model_size: small
+  sample_rate: ${sample_rate}
+
+# inference
+batch_size: 64
+
+# dataset specific
+ds_spcf:
+  idmt_air:
+    sample_rate: 48000
+  idmt_engine:
+    sample_rate: 44100
+  wt_plane_gearbox:
+    sample_rate: 48000
+  mafaulda_sound:
+    sample_rate: 50000
+  mafaulda_vib:
+    sample_rate: 50000
+  sdust_bearing:
+    sample_rate: 25600
+  sdust_gear:
+    sample_rate: 25600
+  umged_sound:
+    sample_rate: 51200
+  umged_vib:
+    sample_rate: 51200
+  umged_vol:
+    sample_rate: 51200
+  umged_cur:
+    sample_rate: 51200
+  pu_vib:
+    sample_rate: 64000
+  pu_cur:
+    sample_rate: 64000

@@ -1,0 +1,14 @@
+# data
+input_duration: 5.0
+sample_rate: 24000
+feat_type: wav  # wav, fbank
+
+# model
+model_name: mert
+model_conf:
+  ver: 330M
+  weighted_sum: False
+  feat_aggre: mean_pool
+
+# inference
+batch_size: 12

@@ -1,0 +1,15 @@
+# data
+sample_rate: 16000
+feat_type: wav  # wav, fbank
+
+# preprocess
+norm: False
+
+# model
+model_name: qwen_audio2_5
+model_conf:
+  ckpt: Qwen2.5-Omni/audio_encoder.pt
+  feat_aggre: mean_pool
+
+# inference
+batch_size: 8
