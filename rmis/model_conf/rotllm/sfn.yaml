@@ -1,0 +1,41 @@
+# data
+input_duration: 1
+sample_rate: 16000
+feat_type: wav
+
+# model
+model_name: rotllm
+model_conf:
+  ckpt: RotLLM/encoder_weights.pth
+
+# inference
+batch_size: 32
+
+# dataset specific
+ds_spcf:
+  idmt_air:
+    sample_rate: 48000
+  idmt_engine:
+    sample_rate: 44100
+  wt_plane_gearbox:
+    sample_rate: 48000
+  mafaulda_sound:
+    sample_rate: 50000
+  mafaulda_vib:
+    sample_rate: 50000
+  sdust_bearing:
+    sample_rate: 25600
+  sdust_gear:
+    sample_rate: 25600
+  umged_sound:
+    sample_rate: 51200
+  umged_vib:
+    sample_rate: 51200
+  umged_vol:
+    sample_rate: 51200
+  umged_cur:
+    sample_rate: 51200
+  pu_vib:
+    sample_rate: 64000
+  pu_cur:
+    sample_rate: 64000

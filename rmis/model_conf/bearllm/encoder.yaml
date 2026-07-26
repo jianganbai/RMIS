@@ -1,0 +1,15 @@
+# data
+sample_rate: 24000
+feat_type: wav
+
+# preprocess
+norm: False
+
+# model
+model_name: bearllm
+model_conf:
+  ckpt: bearllm/vibration_adapter.pth
+  feat_aggre: mean_pool
+
+# inference
+batch_size: 12

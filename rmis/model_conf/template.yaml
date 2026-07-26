@@ -25,6 +25,14 @@ norm_conf:
 
 # model
 model_name: your-awesome-model
+# Preferred model_conf naming:
+#   - ckpt: local checkpoint path
+#   - model_id: model hub identifier
+#   - weight_ckpt: auxiliary or partial weights only when needed by the model family
+#   - feat_aggre: temporal aggregation mode
+#   - weighted_sum: hidden-layer weighted sum switch
+#   - feat_layer: selected hidden layer index
+#   - emb_size: optional projection dimension
 model_conf: {}  # pass to your model by **kwargs
 
 # inference

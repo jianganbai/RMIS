@@ -1,0 +1,9 @@
+sample_rate: 16000
+feat_type: wav  # wav, fbank
+
+model_name: qwen2_audio
+model_conf:
+  ckpt: Qwen2-Audio/audio_encoder.pt
+  feat_aggre: mean_pool
+
+batch_size: 16

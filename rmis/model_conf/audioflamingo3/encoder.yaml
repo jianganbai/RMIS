@@ -1,0 +1,9 @@
+sample_rate: 16000
+feat_type: wav  # wav, fbank
+
+model_name: audioflamingo3
+model_conf:
+  ckpt: AudioFlamingo3/audio_encoder.pt
+  feat_aggre: mean_pool
+
+batch_size: 16

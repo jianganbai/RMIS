@@ -2,10 +2,27 @@
 
 ## INFO
 
-- Official website: https://github.com/microsoft/unilm/tree/master/beats
+- BEATs official website: https://github.com/microsoft/unilm/tree/master/beats
+- OpenBEATs official website: https://github.com/Audio-WestlakeU/OpenBEATs
 
 ## Setup
 
-We evaluate the [pre-trained iter3 checkpoint](https://1drv.ms/u/s!AqeByhGUtINrgcpxJUNDxg4eU0r-vA?e=qezPJ5) on RMIS. We find that the pre-trained iter3 checkpoint is more robust for transfer evaluation than other checkpoints.
+We provide configs for BEATs iter3 and OpenBEATs:
 
-After downloading the checkpoint, you need to modify the `ckpt` key in `rmis/model_conf/beats/iter3.yaml` as the local checkpoint path. You can use either absolute path or relative path to the `model_dir` stated in `conf/basic.yaml`.
+- `iter3.yaml`
+- `open_base.yaml`
+- `open_large.yaml`
+
+After downloading the checkpoint, modify the `ckpt` key in the corresponding yaml as the local checkpoint path. You can use either an absolute path or a path relative to the `model_dir` stated in `conf/basic.yaml`.
+## Evaluation
+
+For example, evaluate BEATs-iter3 with:
+
+```shell
+python -m rmis.scripts.reg_all \
+    --model_conf rmis/model_conf/beats/iter3.yaml \
+    --rel_exp_dir beats_iter3 \
+    --gpu 0
+```
+
+Use `open_base.yaml` or `open_large.yaml` to evaluate an OpenBEATs checkpoint. For multi-GPU evaluation, replace `0` with a comma-separated list of available GPUs.

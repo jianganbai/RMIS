@@ -12,10 +12,10 @@
 
 We evaluate **EAT-base30** and **EAT-large** on RMIS. You can find the introduction to the EAT model on the [official GitHub website](https://github.com/cwx-worst-one/EAT). However, the official GitHub implementation requires [fairseq](https://github.com/facebookresearch/fairseq) to be installed, which is fairly cumbersome. Therefore, we implement EAT by the [offical Hugging Face 🤗](https://huggingface.co/collections/worstchan/eat) version. Model checkpoints will be automatically downloaded from huggingface on the first run. If it is the first run, run the following command to first download the checkpoint with a single process.
 
-```python
+```shell
 python -m rmis.scripts.reg_all \
-    --model_conf rmis/model_conf/dasheng/{scale}.yaml \
-    --rel_exp_dir dummy \
+    --model_conf rmis/model_conf/eat/{variant}.yaml \
+    --rel_exp_dir eat \
     --gpu 0
 ```
 
